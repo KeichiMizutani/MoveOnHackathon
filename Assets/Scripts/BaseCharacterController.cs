@@ -9,13 +9,14 @@ public class BaseCharacterController : MonoBehaviour
     public Vector2 velocityMin = new Vector2(-100.0f, -100.0f);//x,y
     public Vector2 velocityMax = new Vector2(100.0f, 50.0f);
 
-    [HideInInspector] public float dir = 1.0f;
-    [HideInInspector] public float speed = 6.0f;
-    [HideInInspector] public float baseScaleX = 1.0f;       //
-    [HideInInspector] public bool activeStatus = false;     //
-    [HideInInspector] public bool jumped = false;           //
-    [HideInInspector] public bool grounded = false;         //
-    [HideInInspector] public bool groundedPrev = false;     //
+    [System.NonSerialized] public float dir = 1.0f;
+    [System.NonSerialized] public float speed = 6.0f;
+    [System.NonSerialized] public float baseScaleX = 1.0f;       //
+    [System.NonSerialized] public bool activeStatus = false;     //
+    [System.NonSerialized] public bool jumped = false;
+    [System.NonSerialized] public float jumpPower = 7.0f;
+    [System.NonSerialized] public bool grounded = false;         //
+    [System.NonSerialized] public bool groundedPrev = false;     //
 
     //=== キャッシュ =======================================
     protected Transform groundCheckL;
@@ -43,7 +44,7 @@ public class BaseCharacterController : MonoBehaviour
 
         dir = (transform.localScale.x > 0.0f) ? 1 : -1;
         baseScaleX = transform.localScale.x * dir;
-        transform.localScale = new Vector3(baseScaleX, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(-1 * baseScaleX, transform.localScale.y, transform.localScale.z);
 
         activeStatus = true;
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -62,7 +63,13 @@ public class BaseCharacterController : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        //地面チェック
+        // 落下チェック
+        if(transform.position.y < -30f)
+        {
+
+        }
+
+        // 地面チェック
         groundedPrev = grounded;
         grounded = false;
 
@@ -130,4 +137,15 @@ public class BaseCharacterController : MonoBehaviour
             //animation使うならここ
         }
     }
+
+    public virtual void Dead(bool gameOver)
+    {
+        if (!activeStatus)
+        {
+            return;
+        }
+        activeStatus = false;
+        // アニメーションはここ
+    }
+
 }

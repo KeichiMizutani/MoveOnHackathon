@@ -4,4 +4,133 @@ using UnityEngine;
 
 public class PlayerController : BaseCharacterController
 {
+    // ===  外部パラメータ(Inspector表示) ============================
+    public float initHpMax = 3.0f;
+    [Range(0.1f, 50.0f)] public float initSpeed = 12.0f;
+    [Range(-15.0f, -5.0f)] public float cameraOffset = -10.0f;
+
+
+
+    // ===  内部パラメータ ============================
+    int jumpCount = 0;
+    bool breakEnabled = true;
+    float groundFriction = 0.0f;
+
+    float hp = 3.0f;
+    float hpMax = 3.0f;
+
+    // === コード(Monobehaviour基本機能の実装) =========
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // パラメータ初期化
+        speed = initSpeed;
+        SetHP(initHpMax, initHpMax);
+    }
+
+    protected override void FixedUpdateCharacter()
+    {
+        // 着地チェック
+        if (jumped)
+        {
+            if((grounded && ! groundedPrev) || (grounded && Time.fixedTime > jumpStartTime + 1.0f))
+            {
+                jumped = false;
+                jumpCount = 0;
+            }
+        }
+        else
+        {
+            jumpCount = 0;
+            rigidbody2D.gravityScale = gravityScale;
+        }
+
+        // キャラの方向
+        transform.localScale = new Vector3(baseScaleX * dir, transform.localScale.y, transform.localScale.z);
+
+        // ジャンプ中の処理
+        if(jumped && grounded)
+        {
+            if (breakEnabled)
+            {
+                breakEnabled = false;
+                speedVx *= 0.9f;
+            }
+        }
+
+        // 移動減速処理
+        if (breakEnabled)
+        {
+            speedVx *= groundFriction;
+        }
+
+        // カメラ
+        Camera.main.transform.position = transform.position + Vector3.forward * cameraOffset;
+    }
+
+    // === コード(基本アクション)=====================================
+    public override void ActionMove(float n)
+    {
+        if (!activeStatus)
+        {
+            return;
+        }
+
+        // 初期化
+        float dirOld = dir;
+        breakEnabled = false;
+        float moveSpeed = Mathf.Clamp(Mathf.Abs(n), -1.0f, 1.0f);
+
+        // 移動チェック
+        if(n != 0.0f)
+        {
+            dir = Mathf.Sign(n);
+            moveSpeed = (moveSpeed < 0.5f) ? (moveSpeed * (1.0f / 0.5f)) : 1.0f;
+            speedVx = initSpeed * moveSpeed * dir;
+        }
+        else
+        {
+            breakEnabled = true;
+        }
+
+        // その場振り向きチェック
+        if(dirOld != dir)
+        {
+            breakEnabled = true;
+        }
+    }
+
+    public void ActionJump()
+    {
+        switch (jumpCount)
+        {
+            case 0:
+                if (grounded)
+                {
+                    // animation
+                    rigidbody2D.velocity = Vector2.up * jumpPower;
+                    jumpStartTime = Time.fixedTime;
+                    jumped = true;
+                    jumpCount++;
+                }
+                break;
+            case 1:
+                if (!grounded)
+                {
+                    // animation
+                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpPower * 2 /3);
+                    jumped = true;
+                    jumpCount++;
+                }
+                break;
+        }
+    }
+
+    bool SetHP(float _hp, float _hpMax)
+    {
+        hp = _hp;
+        hpMax = _hp;
+        return (hp <= 0.0f);
+    }
 }
