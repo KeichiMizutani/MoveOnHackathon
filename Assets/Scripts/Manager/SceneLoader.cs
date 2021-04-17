@@ -4,6 +4,7 @@ using UnityEngine;
 public class SceneLoader : MonoBehaviour
 {
     static public SceneLoader instance;
+    //ƒV[ƒ“‚Ì–¼‘O
 public   enum sceneName
     {
         Title,
