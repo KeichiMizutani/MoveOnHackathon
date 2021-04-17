@@ -1,3 +1,4 @@
+<<<<<<< HEAD:Assets/Scripts/Character/BaseCharacterController.cs.meta
 fileFormatVersion: 2
 guid: 10b79ca1a6baa4e8e8ece686a0a3717a
 MonoImporter:
@@ -9,3 +10,17 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+=======
+fileFormatVersion: 2
+guid: 476cc7d7cd9874016adc216baab94a0a
+timeCreated: 1484146680
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> parent of 9f63e6f... feat:保存機能のクラスを作成しました。docs:TutorialInfoを削除し、Readmeファイルも削除しました。:Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta

@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:Assets/Scripts/Character/BaseCharacterController.cs.meta
+fileFormatVersion: 2
+guid: f962718955e223e4789890c007ba90bf
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+=======
+>>>>>>> parent of 9f63e6f... feat:保存機能のクラスを作成しました。docs:TutorialInfoを削除し、Readmeファイルも削除しました。
 fileFormatVersion: 2
 guid: 476cc7d7cd9874016adc216baab94a0a
 timeCreated: 1484146680
@@ -10,3 +26,7 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 9f63e6f... feat:保存機能のクラスを作成しました。docs:TutorialInfoを削除し、Readmeファイルも削除しました。:Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs.meta
+>>>>>>> parent of 9f63e6f... feat:保存機能のクラスを作成しました。docs:TutorialInfoを削除し、Readmeファイルも削除しました。
