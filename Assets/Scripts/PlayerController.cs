@@ -6,18 +6,18 @@ public class PlayerController : BaseCharacterController
 {
     // ===  外部パラメータ(Inspector表示) ============================
     public float initHpMax = 3.0f;
-    [Range(0.1f, 50.0f)] public float initSpeed = 12.0f;
-    [Range(-15.0f, -5.0f)] public float cameraOffset = -10.0f;
+    [Range(0.1f, 50.0f)] public float initSpeed = 12.0f;        //横移動のスピード
+    [Range(-15.0f, -5.0f)] public float cameraOffset = -10.0f;  //カメラとの距離
 
 
 
     // ===  内部パラメータ ============================
-    int jumpCount = 0;
-    bool breakEnabled = true;
-    float groundFriction = 0.0f;
+    int jumpCount = 0;              //ジャンプした回数
+    bool breakEnabled = true;       //ブレーキするかしないか
+    float groundFriction = 0.8f;    //地面との滑りやすさ
 
-    float hp = 3.0f;
-    float hpMax = 3.0f;
+    float hp = 3.0f;                //HPの値
+    float hpMax = 3.0f;             //HPの最大値
 
     // === コード(Monobehaviour基本機能の実装) =========
     protected override void Awake()

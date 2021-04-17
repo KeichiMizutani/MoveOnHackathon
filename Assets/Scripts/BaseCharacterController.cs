@@ -6,33 +6,33 @@ public class BaseCharacterController : MonoBehaviour
 {
 
     //=== 外部パラメータ ====================================
-    public Vector2 velocityMin = new Vector2(-100.0f, -100.0f);//x,y
-    public Vector2 velocityMax = new Vector2(100.0f, 50.0f);
+    public Vector2 velocityMin = new Vector2(-100.0f, -100.0f); //それぞれx,yのスピード方向の最小値
+    public Vector2 velocityMax = new Vector2(100.0f, 50.0f);    //それぞれx,yのスピード方向の最大値
 
-    [System.NonSerialized] public float dir = 1.0f;
-    [System.NonSerialized] public float speed = 6.0f;
-    [System.NonSerialized] public float baseScaleX = 1.0f;       //
-    [System.NonSerialized] public bool activeStatus = false;     //
-    [System.NonSerialized] public bool jumped = false;
-    [System.NonSerialized] public float jumpPower = 7.0f;
-    [System.NonSerialized] public bool grounded = false;         //
-    [System.NonSerialized] public bool groundedPrev = false;     //
+    [System.NonSerialized] public float dir = 1.0f;             //角度 sinを用いることでキャラの向いてる方向を取得
+    [System.NonSerialized] public float speed = 6.0f;           //キャラの移動速度
+    [System.NonSerialized] public float baseScaleX = 1.0f;      //キャラのtransformのscaleのx
+    [System.NonSerialized] public bool activeStatus = false;    //アクティブかどうか
+    [System.NonSerialized] public bool jumped = false;          //ジャンプしているかどうか
+    [System.NonSerialized] public float jumpPower = 7.0f;       //ジャンプの強さ
+    [System.NonSerialized] public bool grounded = false;        //着地しているかどうか
+    [System.NonSerialized] public bool groundedPrev = false;    //前フレームの接地判定
 
     //=== キャッシュ =======================================
-    protected Transform groundCheckL;
-    protected Transform groundCheckC;
-    protected Transform groundCheckR;
+    protected Transform groundCheckL;                           //着地判定に使う子オブジェクトの左側
+    protected Transform groundCheckC;                           //着地判定に使う子オブジェクトの中央
+    protected Transform groundCheckR;                           //着地判定に使う子オブジェクトの右側
 
     //=== 内部パラメータ ====================================
-    protected float speedVx = 0.0f;
-    protected float speedVxAddPower = 0.0f;
-    protected float gravityScale = 9.8f;
-    protected float jumpStartTime = 0.0f;
+    protected float speedVx = 0.0f;                             //x方向のスピードを格納
+    //protected float speedVxAddPower = 0.0f;                     //
+    protected float gravityScale = 1.0f;                        //重力のスケール
+    protected float jumpStartTime = 0.0f;                       //狭いところでジャンプしたときに時間で強制的に着地判定を行うための時間を格納した変数
 
-    protected GameObject groundCheckOnRoadObject;           //
-    protected GameObject groundCheckOnEnemyObject;          //
+    protected GameObject groundCheckOnRoadObject;               //ステージのGameObjectを格納
+    protected GameObject groundCheckOnEnemyObject;              //敵や障害物のGameObjectを格納
 
-    protected new Rigidbody2D rigidbody2D;
+    protected new Rigidbody2D rigidbody2D;                      //Rigidbody2D
 
 
     //=== コード(Monobehaviour基本機能の実装) ================
