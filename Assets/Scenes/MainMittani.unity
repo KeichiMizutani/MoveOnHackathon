@@ -2470,7 +2470,7 @@ GameObject:
   - component: {fileID: 1540732507}
   - component: {fileID: 1540732506}
   m_Layer: 6
-  m_Name: BG (2)
+  m_Name: BGL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2539,7 +2539,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 1707491487}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1585234243
 PrefabInstance:
@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 1685014494}
   - component: {fileID: 1685014493}
   m_Layer: 6
-  m_Name: BG (1)
+  m_Name: BGR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2811,7 +2811,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 1707491487}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1687258581
 GameObject:
@@ -2939,6 +2939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1707491487}
+  - component: {fileID: 1707491488}
   m_Layer: 0
   m_Name: BackgroundImg
   m_TagString: Untagged
@@ -2957,12 +2958,29 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1540732507}
   - {fileID: 2054709110}
   - {fileID: 1685014494}
-  - {fileID: 1540732507}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707491488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707491486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc63128a561fe1c45b1b1426d8a3ddfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgrounds:
+  - {fileID: 1540732505}
+  - {fileID: 2054709108}
+  - {fileID: 1685014492}
+  playerCtrl: {fileID: 978948674}
 --- !u!1001 &1709909676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4529,7 +4547,7 @@ GameObject:
   - component: {fileID: 2054709110}
   - component: {fileID: 2054709109}
   m_Layer: 6
-  m_Name: BG
+  m_Name: BGC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4598,7 +4616,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 1707491487}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2072945163
 PrefabInstance:
@@ -4736,7 +4754,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -6.006063e+10, z: 4.5904e-41, w: 0}
+  m_BoundingSphereOverride: {x: 4.5904e-41, y: NaN, z: 0, w: 1.6114932e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
