@@ -80,8 +80,4 @@ public class SaveData : MonoBehaviour
         Debug.Log("現在保存されているスコアのデータは" + PrefasWrapper.GetSaveData(PrefasWrapper.KEY.Score) + "です");
     }
 
-    void SaveScore()
-    {
-        PrefasWrapper.SetSaveData(PrefasWrapper.KEY.Score, 100);
-    }
 }

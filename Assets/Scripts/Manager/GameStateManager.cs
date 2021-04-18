@@ -20,9 +20,18 @@ public class GameStateManager : MonoBehaviour
     public event System.Action StatePlayHandler; //Playのイベント
     public event System.Action StateEndHandler;　//Endのイベント
 
+    //シングルトン化
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Start()
