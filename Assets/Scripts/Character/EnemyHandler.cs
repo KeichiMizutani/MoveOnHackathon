@@ -8,7 +8,7 @@ public class EnemyHandler : MonoBehaviour
 {
      // === キャッシュ =====================================================
     protected EnemyController enemyCtrl;
-    public GameObject player;                          //<-これ後でInspecterから消します
+    protected GameObject player;                          //<-これ後でInspecterから消します
     protected PlayerController playerCtrl;
 
     // === 内部パラメータ =================================================
@@ -19,6 +19,7 @@ public class EnemyHandler : MonoBehaviour
     public virtual void Awake() 
     {
         enemyCtrl = GetComponent<EnemyController>();
+        player = GameObject.FindGameObjectWithTag("Player");
         playerCtrl = player.GetComponent<PlayerController>();
     }
 

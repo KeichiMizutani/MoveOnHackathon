@@ -20,6 +20,7 @@ public class ZakoHandler : EnemyHandler
 
     public override void Start()
     {
+        base.Start();
         SetAttackInterval();
     }
 
