@@ -17,6 +17,7 @@ public class BaseCharacterController : MonoBehaviour
     [System.NonSerialized] public float jumpPower = 7.0f;       //ジャンプの強さ
     [System.NonSerialized] public bool grounded = false;        //着地しているかどうか
     [System.NonSerialized] public bool groundedPrev = false;    //前フレームの接地判定
+    [System.NonSerialized] public new Rigidbody2D rigidbody2D;  //Rigidbody2D
 
     //=== キャッシュ =======================================
     protected Transform groundCheckL;                           //着地判定に使う子オブジェクトの左側
@@ -32,7 +33,7 @@ public class BaseCharacterController : MonoBehaviour
     protected GameObject groundCheckOnRoadObject;               //ステージのGameObjectを格納
     protected GameObject groundCheckOnEnemyObject;              //敵や障害物のGameObjectを格納
 
-    protected new Rigidbody2D rigidbody2D;                      //Rigidbody2D
+                         
 
 
     //=== コード(Monobehaviour基本機能の実装) ================

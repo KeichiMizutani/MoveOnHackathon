@@ -6,6 +6,7 @@ public class EnemyController : BaseCharacterController
 {
     // === 外部パラメータ(Inspector表示) ============================
     public float initSpeed = 6.0f;
+    public float initJumpPower = 7.0f;
     public bool jumpActionEnabled = true;
 
     // === 外部パラメータ ===========================================
@@ -23,6 +24,7 @@ public class EnemyController : BaseCharacterController
 
         playerCtrl = GetComponent<PlayerController>();
         speed = initSpeed;
+        jumpPower = initJumpPower;
     }
 
     protected override void  FixedUpdateCharacter()
@@ -55,7 +57,7 @@ public class EnemyController : BaseCharacterController
     // === コード ============================================================
     public bool ActionJump(){
         if(jumpActionEnabled&& grounded && !jumped){
-            rigidbody2D.AddForce(Vector3.up * jumpPower, ForceMode2D.Impulse);
+            rigidbody2D.velocity = Vector2.up * jumpPower;
             jumped = true;
             jumpStartTime = Time.fixedTime;
         }
@@ -67,6 +69,26 @@ public class EnemyController : BaseCharacterController
         attackEnable = true;
 
         //実装未定
+    }
+
+    public override void ActionMove(float n)
+    {
+        if (!activeStatus)
+        {
+            return;
+        }
+
+        // 初期化
+        float dirOld = dir;
+        float moveSpeed = Mathf.Clamp(Mathf.Abs(n), -1.0f, 1.0f);
+
+         // 移動チェック
+        if(n != 0.0f)
+        {
+            dir = Mathf.Sign(n);
+            moveSpeed = (moveSpeed < 0.5f) ? (moveSpeed * (1.0f / 0.5f)) : 1.0f;
+            speedVx = initSpeed * moveSpeed * dir;
+        }
     }
 
     public override void Dead(bool gameOver)
