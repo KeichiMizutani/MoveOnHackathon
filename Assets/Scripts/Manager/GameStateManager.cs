@@ -20,9 +20,18 @@ public class GameStateManager : MonoBehaviour
     public event System.Action StatePlayHandler; //Playï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
     public event System.Action StateEndHandler; //Endï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
 
+    //ƒVƒ“ƒOƒ‹ƒgƒ“‰»
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void Start()

@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class StageTimer : MonoBehaviour
 {
-    float timeLimit = 5.0f; //��������
+    float timeLimit = 60.0f; //�������
+
     float TimeLimit
     {
         get
@@ -28,6 +29,8 @@ public class StageTimer : MonoBehaviour
         GameStateManager.instance.StatePlayHandler += CountDownTimeLimit;
         EndCountDownHandler += GameStateManager.instance.ReceiveStatePlayNotify;
         OverTimeLimitHandler += GameStateManager.instance.ReceiveStateEndNotify;
+
+        timeLimit = 60.0f;
     }
 
     void Update()
