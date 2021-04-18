@@ -5,7 +5,7 @@ public enum gameState
 {
     Ready,
     Play,
-    Goal,
+    End,
     GameOver,
     Pose
 }
@@ -16,8 +16,9 @@ public class GameStateManager : MonoBehaviour
     gameState currentGameState; //現在のゲームステート
 
     //イベント宣言
-    public event System.Action StateReadyHandler;
-    public event System.Action StatePlayHandler;
+    public event System.Action StateReadyHandler; //Readyのイベント
+    public event System.Action StatePlayHandler; //Playのイベント
+    public event System.Action StateEndHandler;　//Endのイベント
 
     private void Awake()
     {
@@ -28,9 +29,6 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         ReceiveStateReadyNotify();
-        StageTimer stageTimer = new StageTimer();
-        stageTimer.EndCountDownHandler += ReceiveStatePlayNotify;
-
     }
 
     //ステートをReadyに変更してReadyイベントに登録されている処理を実行させる
@@ -46,6 +44,13 @@ public class GameStateManager : MonoBehaviour
     {
         SetState(gameState.Play);
         StatePlayHandler?.Invoke();
+    }
+
+    //ステートをEndに変更してPlayイベントに登録されている処理を実行させる
+    public void ReceiveStateEndNotify()
+    {
+        SetState(gameState.End);
+        StateEndHandler?.Invoke();
     }
 
     //ステートを設定する
