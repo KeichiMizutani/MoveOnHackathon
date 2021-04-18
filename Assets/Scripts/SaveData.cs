@@ -6,15 +6,15 @@ using UnityEngine;
 public static class PrefasWrapper
 {
     /*
-     PlayerPrefs‚Ìg—p•û–@
-       E’l‚ğ“Ç‚İ‚Ş
-    @@   PlayerPrefs.Get››("ƒL[");
-   @E’l‚ğƒZƒbƒg‚·‚éA•Û‘¶‚·‚é
-        @   PlayerPrefs.Set››("ƒL[", "’l");©››‚É‚Íint,float,string‚Ì‚¢‚¸‚ê‚©‚ª“ü‚é
-         @  PlayerPrefs.Save();
+     PlayerPrefsï¿½Ìgï¿½pï¿½ï¿½ï¿½@
+       ï¿½Eï¿½lï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
+    ï¿½@ï¿½@   PlayerPrefs.Getï¿½ï¿½ï¿½ï¿½("ï¿½Lï¿½[");
+   ï¿½@ï¿½Eï¿½lï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½Aï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½
+        ï¿½@   PlayerPrefs.Setï¿½ï¿½ï¿½ï¿½("ï¿½Lï¿½[", "ï¿½l");ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½int,float,stringï¿½Ì‚ï¿½ï¿½ï¿½ï¿½ê‚©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+         ï¿½@  PlayerPrefs.Save();
          */
 
-    // PlayerPrefs‚Åg—p‚Å‚«‚éŒ^ƒŠƒXƒg
+    // PlayerPrefsï¿½Ågï¿½pï¿½Å‚ï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½Xï¿½g
     private enum TYPE
     {
         INT,
@@ -22,21 +22,21 @@ public static class PrefasWrapper
         FLOAT
     }
 
-    //PlayerPrefs‚Å•Û‘¶‚·‚é‚à‚Ì
+    //PlayerPrefsï¿½Å•Û‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public enum KEY
     {
-        Score, //ƒXƒRƒA
-        Sound //‰¹—Êİ’è
+        Score, //ï¿½Xï¿½Rï¿½A
+        Sound //ï¿½ï¿½ï¿½Êİ’ï¿½
     }
 
-    //PlayerPrefs‚ÅŠÇ—‚µ‚Ä‚¢‚éƒf[ƒ^ƒŠƒXƒg
+    //PlayerPrefsï¿½ÅŠÇ—ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Xï¿½g
     private static Dictionary<KEY, TYPE> saveList = new Dictionary<KEY, TYPE>()
     {
-        {KEY.Score,TYPE.INT }, //ƒXƒRƒA
-        {KEY.Sound,TYPE.STRING }@//‰¹—Êİ’è
+        {KEY.Score,TYPE.INT }, //ï¿½Xï¿½Rï¿½A
+        {KEY.Sound,TYPE.STRING } //ï¿½ï¿½ï¿½Êİ’ï¿½
     };
 
-    //•Û‘¶‚µ‚½‚¢ƒf[ƒ^‚ğİ’è‚·‚é
+    //ï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½İ’è‚·ï¿½ï¿½
     public static void SetSaveData(KEY key, object value)
     {
         if (value is int)
@@ -52,10 +52,10 @@ public static class PrefasWrapper
             PlayerPrefs.SetString(key.ToString(), (string)value);
         }
         PlayerPrefs.Save();
-        Debug.Log("ƒf[ƒ^‚ğ•Û‘¶‚µ‚Ü‚µ‚½");
+        Debug.Log("ï¿½fï¿½[ï¿½^ï¿½ï¿½Û‘ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
     }
 
-    //•Û‘¶‚µ‚½’l‚ğ“Ç‚İ‚Ş
+    //ï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½Ç‚İï¿½ï¿½ï¿½
     public static object GetSaveData(KEY key)
     {
         switch (saveList[key])
@@ -67,7 +67,7 @@ public static class PrefasWrapper
             case TYPE.STRING:
                 return PlayerPrefs.GetString(key.ToString());
             default:
-                Debug.Log("ƒf[ƒ^‚ğ“Ç‚İ‚İ‚Ü‚µ‚½");
+                Debug.Log("ï¿½fï¿½[ï¿½^ï¿½ï¿½Ç‚İï¿½ï¿½İ‚Ü‚ï¿½ï¿½ï¿½");
                 return null;
         }
     }
@@ -77,7 +77,7 @@ public class SaveData : MonoBehaviour
 {
     private void Start()
     {
-        Debug.Log("Œ»İ•Û‘¶‚³‚ê‚Ä‚¢‚éƒXƒRƒA‚Ìƒf[ƒ^‚Í" + PrefasWrapper.GetSaveData(PrefasWrapper.KEY.Score) + "‚Å‚·");
+        Debug.Log("ï¿½ï¿½ï¿½İ•Û‘ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Xï¿½Rï¿½Aï¿½Ìƒfï¿½[ï¿½^ï¿½ï¿½" + PrefasWrapper.GetSaveData(PrefasWrapper.KEY.Score) + "ï¿½Å‚ï¿½");
     }
 
 }

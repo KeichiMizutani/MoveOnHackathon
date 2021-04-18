@@ -13,12 +13,12 @@ public enum gameState
 public class GameStateManager : MonoBehaviour
 {
     public static GameStateManager instance;
-    gameState currentGameState; //Œ»İ‚ÌƒQ[ƒ€ƒXƒe[ƒg
+    gameState currentGameState; //ï¿½ï¿½ï¿½İ‚ÌƒQï¿½[ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½g
 
-    //ƒCƒxƒ“ƒgéŒ¾
-    public event System.Action StateReadyHandler; //Ready‚ÌƒCƒxƒ“ƒg
-    public event System.Action StatePlayHandler; //Play‚ÌƒCƒxƒ“ƒg
-    public event System.Action StateEndHandler;@//End‚ÌƒCƒxƒ“ƒg
+    //ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½éŒ¾
+    public event System.Action StateReadyHandler; //Readyï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
+    public event System.Action StatePlayHandler; //Playï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
+    public event System.Action StateEndHandler; //Endï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
 
     //ƒVƒ“ƒOƒ‹ƒgƒ“‰»
     private void Awake()
@@ -39,32 +39,32 @@ public class GameStateManager : MonoBehaviour
         ReceiveStateReadyNotify();
     }
 
-    //ƒXƒe[ƒg‚ğReady‚É•ÏX‚µ‚ÄReadyƒCƒxƒ“ƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éˆ—‚ğÀs‚³‚¹‚é
+    //ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½Readyï¿½É•ÏXï¿½ï¿½ï¿½ï¿½Readyï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½É“oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éˆï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void ReceiveStateReadyNotify()
     {
         SetState(gameState.Ready);
         StateReadyHandler?.Invoke();
     }
 
-    //ƒXƒe[ƒg‚ğPlay‚É•ÏX‚µ‚ÄPlayƒCƒxƒ“ƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éˆ—‚ğÀs‚³‚¹‚é
+    //ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½Playï¿½É•ÏXï¿½ï¿½ï¿½ï¿½Playï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½É“oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éˆï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void ReceiveStatePlayNotify()
     {
         SetState(gameState.Play);
         StatePlayHandler?.Invoke();
     }
 
-    //ƒXƒe[ƒg‚ğEnd‚É•ÏX‚µ‚ÄPlayƒCƒxƒ“ƒg‚É“o˜^‚³‚ê‚Ä‚¢‚éˆ—‚ğÀs‚³‚¹‚é
+    //ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½Endï¿½É•ÏXï¿½ï¿½ï¿½ï¿½Playï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½É“oï¿½^ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éˆï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void ReceiveStateEndNotify()
     {
         SetState(gameState.End);
         StateEndHandler?.Invoke();
     }
 
-    //ƒXƒe[ƒg‚ğİ’è‚·‚é
+    //ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½İ’è‚·ï¿½ï¿½
     void SetState(gameState state)
     {
         currentGameState = state;
-        Debug.Log("ƒQ[ƒ€ƒXƒe[ƒg‚ğ" + currentGameState + "‚É•ÏX‚µ‚Ü‚µ‚½");
+        Debug.Log("ï¿½Qï¿½[ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½" + currentGameState + "ï¿½É•ÏXï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
     }
 
 }

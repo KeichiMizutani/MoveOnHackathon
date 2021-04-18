@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class TItleUI : MonoBehaviour
 {
     [SerializeField]
-  Text  myHighScoreText; //ƒnƒCƒXƒRƒA‚ğ•\¦‚·‚éƒeƒLƒXƒg
+  Text  myHighScoreText; //ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
     [SerializeField]
     AudioSource mainAudioSource;
     [SerializeField]
@@ -12,11 +12,12 @@ public class TItleUI : MonoBehaviour
 
     private void Start()
     {
-        //•Û‘¶‚³‚ê‚Ä‚¢‚éƒnƒCƒXƒRƒA‚Ì’l‚ğŒÄ‚Ñ‚¾‚µ‚ÄƒeƒLƒXƒg‚É•\¦
+        //ï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½Ì’lï¿½ï¿½Ä‚Ñ‚ï¿½ï¿½ï¿½ï¿½Äƒeï¿½Lï¿½Xï¿½gï¿½É•\ï¿½ï¿½
         myHighScoreText.text = "YOUR HIGH SCORE:" + PrefasWrapper.GetSaveData(PrefasWrapper.KEY.Score).ToString();
     }
 
-    //ƒXƒ^[ƒgƒ{ƒ^ƒ“‚ğ‰Ÿ‚·
+    //ï¿½Xï¿½^ï¿½[ï¿½gï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½
+
     public void PushStartBtn()
     {
         SceneLoader.instance.LoadScene(SceneLoader.sceneName.Main);

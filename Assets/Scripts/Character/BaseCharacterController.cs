@@ -64,17 +64,7 @@ public class BaseCharacterController : MonoBehaviour
 
     }
 
-    //キャラクターが動き始めるイベント処理開始
-    void StartMove()
-    {
-        isMove = true;
-    }
 
-    //キャラクターを止めるイベント処理開始
-    void StopMove()
-    {
-        isMove = false;
-    }
 
     protected virtual void FixedUpdate()
     {
@@ -165,6 +155,18 @@ public class BaseCharacterController : MonoBehaviour
         }
         activeStatus = false;
         // アニメーションはここ
+    }
+
+    //キャラクターが動き始めるイベント処理開始
+    void StartMove()
+    {
+        isMove = true;
+    }
+
+    //キャラクターを止めるイベント処理開始
+    void StopMove()
+    {
+        isMove = false;
     }
 
 }

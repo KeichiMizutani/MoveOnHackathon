@@ -20,11 +20,7 @@ public class StageTimer : MonoBehaviour
 
     public event System.Action EndCountDownHandler;　//カウントダウンが終了したことを通知するためのイベント
     public event System.Action OverTimeLimitHandler; //制限時間終了
-
-    [SerializeField]
-    AudioClip[] countDownSE = new AudioClip[4];   //カウントダウンのSE
-    [SerializeField]
-    AudioSource mainAudioSource; //オーディオソース
+    
 
     private void Start()
     {
@@ -73,15 +69,9 @@ public class StageTimer : MonoBehaviour
     {
         for(int i = countDownTimer; i > 0; i--)
         {
-            mainAudioSource.PlayOneShot(countDownSE[0]);
-            yield return new WaitForSeconds(countDownInterVal);
-            mainAudioSource.PlayOneShot(countDownSE[1]);
-            yield return new WaitForSeconds(countDownInterVal);
-            mainAudioSource.PlayOneShot(countDownSE[2]);
             yield return new WaitForSeconds(countDownInterVal);
             Debug.Log(i);
         }
-        mainAudioSource.PlayOneShot(countDownSE[4]);
         //カウントダウンが終了したことを通知する
         EndCountDownHandler?.Invoke();
     }
