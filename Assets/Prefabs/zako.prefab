@@ -232,9 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233ebab70f0ad2549ba661571a0b891e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  liquidObj: {fileID: 0}
-  liquidVelocity: 5
+  liquidObj: {fileID: 6895277070938466737, guid: cc6c3fe46c8d10d4c9b68daf3f35b7d3, type: 3}
+  liquidVelocity: 7
   attackIntervalRange: {x: 3, y: 6}
 --- !u!1 &3902050137048170151
 GameObject:
