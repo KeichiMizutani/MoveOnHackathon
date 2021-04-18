@@ -66,7 +66,7 @@ public class PlayerController : BaseCharacterController
         }
 
         // カメラ
-        Camera.main.transform.position = transform.position + Vector3.forward * cameraOffset;
+        Camera.main.transform.position = new Vector3(transform.position.x, 0, 0) + Vector3.forward * cameraOffset;
     }
 
     // === コード(基本アクション)=====================================
