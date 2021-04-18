@@ -8,30 +8,30 @@ public class ScoreCountUI : MonoBehaviour
     [SerializeField]
      Text scoreText;
     [SerializeField]
-    Text highScoreUpdateText; //ƒnƒCƒXƒRƒA‚ğXV‚µ‚½‚Æ‚«‚É•\¦‚³‚ê‚éƒeƒLƒXƒg
+    Text highScoreUpdateText; //ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½É•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½g
 
-    int sec = 1; //ƒeƒLƒXƒg•\¦•b”
+    int sec = 1; //ï¿½eï¿½Lï¿½Xï¿½gï¿½\ï¿½ï¿½ï¿½bï¿½ï¿½
 
 
     void Start()
     {
-        //ƒnƒCƒXƒRƒA‚ğXV‚µ‚½‚Æ‚«‚É•\¦‚³‚ê‚éƒeƒLƒXƒg‚ğÅ‰‚Í”ñ•\¦‚É‚·‚é
+        //ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½É•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½ï¿½Åï¿½ï¿½Í”ï¿½\ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
         highScoreUpdateText.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        //ŠƒXƒRƒA‚ğUI‚É”½‰f‚µ‘±‚¯‚é
-        scoreText.text =@"Your Score: " + ScoreManager.instance.MyScore.ToString();
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Rï¿½Aï¿½ï¿½UIï¿½É”ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        scoreText.text = "Your Score: " + ScoreManager.instance.MyScore.ToString();
 
-        //‚à‚µŠƒXƒRƒA‚ªƒnƒCƒXƒRƒA‚ğ’´‚¦‚½‚çƒnƒCƒXƒRƒAXVƒeƒLƒXƒg‚ğ•\¦‚·‚é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Rï¿½Aï¿½ï¿½ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½ğ’´‚ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½Xï¿½Vï¿½eï¿½Lï¿½Xï¿½gï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if(ScoreManager.instance.MyScore > ScoreManager.instance.HighScore)
         {
             StartCoroutine("ShowUpdateHighScoreText");
         }
     }
 
-    //ƒnƒCƒXƒRƒAXV‚µ‚½‚Æ‚«‚Ì’Ê’m‚ğˆê’èŠÔ•\¦‚³‚¹‚é
+    //ï¿½nï¿½Cï¿½Xï¿½Rï¿½Aï¿½Xï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ì’Ê’mï¿½ï¿½ï¿½ï¿½èï¿½Ô•\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     IEnumerator ShowUpdateHighScoreText()
     {
         highScoreUpdateText.gameObject.SetActive(true);
