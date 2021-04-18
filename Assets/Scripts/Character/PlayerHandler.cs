@@ -27,5 +27,11 @@ public class PlayerHandler : MonoBehaviour
         {
             playerCtrl.ActionJump();
         }
+
+        if(Input.GetMouseButtonDown(0)){
+            playerCtrl.ActionAttack();
+        }
     }
+
+
 }
