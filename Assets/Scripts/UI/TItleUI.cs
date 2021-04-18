@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class TItleUI : MonoBehaviour
 {
     [SerializeField]
-  Text  myHighScoreText; //�n�C�X�R�A��\������e�L�X�g
+  Text  myHighScoreText; //自分の所持スコア
     [SerializeField]
     AudioSource mainAudioSource;
     [SerializeField]
@@ -12,7 +12,7 @@ public class TItleUI : MonoBehaviour
 
     private void Start()
     {
-        //�ۑ�����Ă���n�C�X�R�A�̒l��Ăт����ăe�L�X�g�ɕ\��
+        //ハイスコアを呼びだしてテキストに表示する
         myHighScoreText.text = "YOUR HIGH SCORE:" + PrefasWrapper.GetSaveData(PrefasWrapper.KEY.Score).ToString();
     }
 

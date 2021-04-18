@@ -2,11 +2,12 @@ using UnityEngine;
 using System;
 using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class StageTimer : MonoBehaviour
 {
     float timeLimit = 60.0f; //制限時間
-    float TimeLimit
+   public float TimeLimit
     {
         get
         {
@@ -14,13 +15,26 @@ public class StageTimer : MonoBehaviour
         }
     }　//制限時間参照用
     int countDownTimer = 3; //シーン移動してからのカウントダウン
+    public int CountDownTimer
+    {
+        get
+        {
+            return countDownTimer;
+        }
+    }
     int countDownInterVal = 1; //カウントダウンの待つ間隔
 
     bool isCount = false; //今カウントダウンができるか
 
     public event System.Action EndCountDownHandler;　//カウントダウンが終了したことを通知するためのイベント
     public event System.Action OverTimeLimitHandler; //制限時間終了
-    
+
+    [SerializeField]
+    AudioClip[] countDownSE = new AudioClip[2];   //カウントダウンのSE
+    [SerializeField]
+    AudioSource mainAudioSource; //オーディオソース
+    [SerializeField]
+    Text countDownText;
 
     private void Start()
     {
@@ -67,11 +81,15 @@ public class StageTimer : MonoBehaviour
     //ゲームスタートまでのカウントダウン
     IEnumerator CountDown()
     {
-        for(int i = countDownTimer; i > 0; i--)
+        for (int i = countDownTimer; i > 0; i--)
         {
+            mainAudioSource.PlayOneShot(countDownSE[0]);
+            countDownText.text =i.ToString();
             yield return new WaitForSeconds(countDownInterVal);
             Debug.Log(i);
         }
+        mainAudioSource.PlayOneShot(countDownSE[1]);
+        countDownText.gameObject.SetActive(false);
         //カウントダウンが終了したことを通知する
         EndCountDownHandler?.Invoke();
     }
