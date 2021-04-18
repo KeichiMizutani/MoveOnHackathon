@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class StageTimer : MonoBehaviour
 {
-    float timeLimit = 60.0f; //制限時間
+    float timeLimit = 5.0f; //制限時間
     float TimeLimit
     {
         get
@@ -21,20 +21,13 @@ public class StageTimer : MonoBehaviour
     public event System.Action EndCountDownHandler;　//カウントダウンが終了したことを通知するためのイベント
     public event System.Action OverTimeLimitHandler; //制限時間終了
 
-    private void Awake()
+    private void Start()
     {
         //イベント登録
-        GameStateManager.instance.StateReadyHandler += Start;
+        GameStateManager.instance.StateReadyHandler += StartCountDown;
         GameStateManager.instance.StatePlayHandler += CountDownTimeLimit;
         EndCountDownHandler += GameStateManager.instance.ReceiveStatePlayNotify;
         OverTimeLimitHandler += GameStateManager.instance.ReceiveStateEndNotify;
-    }
-
-
-    void Start()
-    { 
-        //カウントダウンを開始する
-        StartCoroutine("PlayCountDown");
     }
 
     void Update()
@@ -60,9 +53,16 @@ public class StageTimer : MonoBehaviour
     {
         isCount = true;
     }
+
+    //ゲーム開始までのカウントダウンをスタートさせる
+    void StartCountDown()
+    {
+        //カウントダウンを開始する
+        StartCoroutine("CountDown");
+    }
     
     //ゲームスタートまでのカウントダウン
-    IEnumerator PlayCountDown()
+    IEnumerator CountDown()
     {
         for(int i = countDownTimer; i > 0; i--)
         {
