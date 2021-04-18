@@ -5,25 +5,25 @@ using UnityEngine.Events;
 
 public class StageTimer : MonoBehaviour
 {
-    float timeLimit = 5.0f; //§ŒÀŠÔ
+    float timeLimit = 5.0f; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     float TimeLimit
     {
         get
         {
             return timeLimit;
         }
-    }@//§ŒÀŠÔQÆ—p
-    int countDownTimer = 3; //ƒV[ƒ“ˆÚ“®‚µ‚Ä‚©‚ç‚ÌƒJƒEƒ“ƒgƒ_ƒEƒ“
-    int countDownInterVal = 1; //ƒJƒEƒ“ƒgƒ_ƒEƒ“‚Ì‘Ò‚ÂŠÔŠu
+    } //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÔQï¿½Æ—p
+    int countDownTimer = 3; //ï¿½Vï¿½[ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ÌƒJï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½
+    int countDownInterVal = 1; //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½Ì‘Ò‚ÂŠÔŠu
 
-    bool isCount = false; //¡ƒJƒEƒ“ƒgƒ_ƒEƒ“‚ª‚Å‚«‚é‚©
+    bool isCount = false; //ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½é‚©
 
-    public event System.Action EndCountDownHandler;@//ƒJƒEƒ“ƒgƒ_ƒEƒ“‚ªI—¹‚µ‚½‚±‚Æ‚ğ’Ê’m‚·‚é‚½‚ß‚ÌƒCƒxƒ“ƒg
-    public event System.Action OverTimeLimitHandler; //§ŒÀŠÔI—¹
+    public event System.Action EndCountDownHandler; //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½Ê’mï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌƒCï¿½xï¿½ï¿½ï¿½g
+    public event System.Action OverTimeLimitHandler; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÔIï¿½ï¿½
 
     private void Start()
     {
-        //ƒCƒxƒ“ƒg“o˜^
+        //ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½oï¿½^
         GameStateManager.instance.StateReadyHandler += StartCountDown;
         GameStateManager.instance.StatePlayHandler += CountDownTimeLimit;
         EndCountDownHandler += GameStateManager.instance.ReceiveStatePlayNotify;
@@ -32,14 +32,14 @@ public class StageTimer : MonoBehaviour
 
     void Update()
     {
-        //‚à‚µƒJƒEƒ“ƒgƒ_ƒEƒ“‚Å‚«‚éó‘Ô‚È‚ç
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Ô‚È‚ï¿½
         if (isCount)
         {
-            //§ŒÀŠÔ‚ğŠJn‚·‚é
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½
             timeLimit -= Time.deltaTime;
             Debug.Log(timeLimit);
 
-            //§ŒÀŠÔ‚ªƒ[ƒ‚É‚È‚Á‚½‚ç§ŒÀŠÔI—¹‚Ì’Ê’m‚ğ”­s‚·‚é
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½[ï¿½ï¿½ï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½ç§ï¿½ï¿½ï¿½ï¿½ï¿½ÔIï¿½ï¿½ï¿½Ì’Ê’mï¿½ğ”­sï¿½ï¿½ï¿½ï¿½
             if (timeLimit <= 0)
             {
                 isCount = false;
@@ -48,20 +48,20 @@ public class StageTimer : MonoBehaviour
         }
     }
 
-    //ƒJƒEƒ“ƒgƒ_ƒEƒ“‚Å‚«‚é‚©‚Ç‚¤‚©‚ğØ‚è‘Ö‚¦‚é
+    //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½Å‚ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½ï¿½
     void CountDownTimeLimit()
     {
         isCount = true;
     }
 
-    //ƒQ[ƒ€ŠJn‚Ü‚Å‚ÌƒJƒEƒ“ƒgƒ_ƒEƒ“‚ğƒXƒ^[ƒg‚³‚¹‚é
+    //ï¿½Qï¿½[ï¿½ï¿½ï¿½Jï¿½nï¿½Ü‚Å‚ÌƒJï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void StartCountDown()
     {
-        //ƒJƒEƒ“ƒgƒ_ƒEƒ“‚ğŠJn‚·‚é
+        //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½nï¿½ï¿½ï¿½ï¿½
         StartCoroutine("CountDown");
     }
     
-    //ƒQ[ƒ€ƒXƒ^[ƒg‚Ü‚Å‚ÌƒJƒEƒ“ƒgƒ_ƒEƒ“
+    //ï¿½Qï¿½[ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½gï¿½Ü‚Å‚ÌƒJï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½
     IEnumerator CountDown()
     {
         for(int i = countDownTimer; i > 0; i--)
@@ -69,7 +69,7 @@ public class StageTimer : MonoBehaviour
             yield return new WaitForSeconds(countDownInterVal);
             Debug.Log(i);
         }
-        //ƒJƒEƒ“ƒgƒ_ƒEƒ“‚ªI—¹‚µ‚½‚±‚Æ‚ğ’Ê’m‚·‚é
+        //ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½_ï¿½Eï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½Ê’mï¿½ï¿½ï¿½ï¿½
         EndCountDownHandler?.Invoke();
     }
     

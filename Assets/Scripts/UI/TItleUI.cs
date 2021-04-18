@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class TItleUI : MonoBehaviour
 {
-    //ƒXƒ^[ƒgƒ{ƒ^ƒ“‚ğ‰Ÿ‚·
-@public void PushStartBtn()
+    //ï¿½Xï¿½^ï¿½[ï¿½gï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public void PushStartBtn()
     {
         SceneLoader.instance.LoadScene(SceneLoader.sceneName.Main);
     }
