@@ -20,7 +20,7 @@ public class GameStateManager : MonoBehaviour
     public event System.Action StatePlayHandler; //Playï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
     public event System.Action StateEndHandler; //Endï¿½ÌƒCï¿½xï¿½ï¿½ï¿½g
 
-    //ƒVƒ“ƒOƒ‹ƒgƒ“‰»
+    //ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½
     private void Awake()
     {
         if (instance == null)
@@ -64,7 +64,7 @@ public class GameStateManager : MonoBehaviour
     void SetState(gameState state)
     {
         currentGameState = state;
-        Debug.Log("ï¿½Qï¿½[ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½" + currentGameState + "ï¿½É•ÏXï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
+        //Debug.Log("ï¿½Qï¿½[ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½gï¿½ï¿½" + currentGameState + "ï¿½É•ÏXï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
     }
 
 }

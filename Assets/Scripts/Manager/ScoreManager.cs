@@ -56,7 +56,7 @@ public    static ScoreManager instance; //�C���X�^���X��
     {
         myScore = 0; //�����l�����Z�b�g
         //�X�e�[�W�N���A���ɃX�R�A�����Z�����
-        GameStateManager.instance.StateEndHandler += PlusClearScore;
+        //GameStateManager.instance.StateEndHandler += PlusClearScore;
     }
 
     //��Q�����󂵂��Ƃ��Ɏ����̃X�R�A�ɉ��Z����
