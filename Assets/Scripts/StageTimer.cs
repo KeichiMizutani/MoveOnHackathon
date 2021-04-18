@@ -16,14 +16,18 @@ public class StageTimer : MonoBehaviour
     int countDownTimer = 3; //シーン移動してからのカウントダウン
     int countDownInterVal = 1; //カウントダウンの待つ間隔
 
+    bool isCount = false; //今カウントダウンができるか
+
     public event System.Action EndCountDownHandler;　//カウントダウンが終了したことを通知するためのイベント
+    public event System.Action OverTimeLimitHandler; //制限時間終了
 
     private void Awake()
     {
-        
         //イベント登録
         GameStateManager.instance.StateReadyHandler += Start;
+        GameStateManager.instance.StatePlayHandler += CountDownTimeLimit;
         EndCountDownHandler += GameStateManager.instance.ReceiveStatePlayNotify;
+        OverTimeLimitHandler += GameStateManager.instance.ReceiveStateEndNotify;
     }
 
 
@@ -31,9 +35,31 @@ public class StageTimer : MonoBehaviour
     { 
         //カウントダウンを開始する
         StartCoroutine("PlayCountDown");
-
     }
 
+    void Update()
+    {
+        //もしカウントダウンできる状態なら
+        if (isCount)
+        {
+            //制限時間を開始する
+            timeLimit -= Time.deltaTime;
+            Debug.Log(timeLimit);
+
+            //制限時間がゼロになったら制限時間終了の通知を発行する
+            if (timeLimit <= 0)
+            {
+                isCount = false;
+                OverTimeLimitHandler?.Invoke();
+            }
+        }
+    }
+
+    //カウントダウンできるかどうかを切り替える
+    void CountDownTimeLimit()
+    {
+        isCount = true;
+    }
     
     //ゲームスタートまでのカウントダウン
     IEnumerator PlayCountDown()
@@ -43,7 +69,6 @@ public class StageTimer : MonoBehaviour
             yield return new WaitForSeconds(countDownInterVal);
             Debug.Log(i);
         }
-
         //カウントダウンが終了したことを通知する
         EndCountDownHandler?.Invoke();
     }
