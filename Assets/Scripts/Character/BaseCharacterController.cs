@@ -130,6 +130,10 @@ public class BaseCharacterController : MonoBehaviour
 
     }
 
+    protected virtual void OnCollisionEnter2D(Collision2D other) {
+        
+    }
+
     //=== コード(基本アクション) ===========================
 
     public virtual void ActionMove(float n)
@@ -147,7 +151,7 @@ public class BaseCharacterController : MonoBehaviour
         }
     }
 
-    public virtual void Dead(bool gameOver)
+    public virtual void Dead()
     {
         if (!activeStatus)
         {

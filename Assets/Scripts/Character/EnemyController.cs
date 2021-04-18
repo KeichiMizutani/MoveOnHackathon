@@ -91,10 +91,6 @@ public class EnemyController : BaseCharacterController
         }
     }
 
-    public override void Dead(bool gameOver)
-    {
-        base.Dead(gameOver);
-        Destroy(gameObject, 1.0f);//<--ObjectBoolにしたいお気持ち
-    }
+  
 
 }

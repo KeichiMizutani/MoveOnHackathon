@@ -29,6 +29,13 @@ public class PlayerController : BaseCharacterController
         SetHP(initHpMax, initHpMax);
     }
 
+    protected override void Update()
+    {
+        if(hp <= 0){
+            
+        }
+    }
+
     protected override void FixedUpdateCharacter()
     {
         // 着地チェック
@@ -67,6 +74,17 @@ public class PlayerController : BaseCharacterController
 
         // カメラ
         Camera.main.transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, 0) + Vector3.forward * cameraOffset;
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Enemy"){
+            ActionDamage(1.0f);
+        }
+        else if
+        (other.gameObject.tag == "Boss"){
+            ActionDamage(5.0f);
+        }
     }
 
     // === コード(基本アクション)=====================================
@@ -125,6 +143,10 @@ public class PlayerController : BaseCharacterController
                 }
                 break;
         }
+    }
+
+    public void ActionDamage(float _damage){
+        hp -= _damage;
     }
 
     bool SetHP(float _hp, float _hpMax)

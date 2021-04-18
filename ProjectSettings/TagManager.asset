@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Road
   - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX
