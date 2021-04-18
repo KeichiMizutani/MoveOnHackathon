@@ -1294,6 +1294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: zako (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3902050136184594953, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1463,6 +1467,10 @@ PrefabInstance:
     - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_Name
       value: zako (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3902050136184594953, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_RootOrder
@@ -2490,6 +2498,10 @@ PrefabInstance:
     - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_Name
       value: zako (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3902050136184594953, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_RootOrder
@@ -5023,7 +5035,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -6.006063e+10, z: 4.5904e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 69.78711, z: 7.12e-43, w: 0.00009052124}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5200,6 +5212,10 @@ PrefabInstance:
     - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_Name
       value: zako
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902050136184594946, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3902050136184594953, guid: 21f15efd0fbbf5944841f5061f765375, type: 3}
       propertyPath: m_RootOrder

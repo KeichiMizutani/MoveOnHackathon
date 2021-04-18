@@ -3,13 +3,13 @@ using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
-public    static ScoreManager instance; //ƒCƒ“ƒXƒ^ƒ“ƒX‰»
+public    static ScoreManager instance; //ï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½ï¿½
 
-    //=== “à•”ƒpƒ‰ƒ[ƒ^ ====================================
-    int myScore = 0; //ŠƒXƒRƒA
+    //=== ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ ====================================
+    int myScore = 0; //ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½Rï¿½A
     int highScore = 0;
 
-    //(ŠO•”QÆ—p)
+    //(ï¿½Oï¿½ï¿½ï¿½Qï¿½Æ—p)
     public int MyScore
     {
         get
@@ -26,18 +26,18 @@ public    static ScoreManager instance; //ƒCƒ“ƒXƒ^ƒ“ƒX‰»
         }
     }
 
-    //=== ’²®ƒpƒ‰ƒ[ƒ^ ====================================
+    //=== ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ ====================================
     [SerializeField]
-    int clearScore = 1000; //ƒNƒŠƒAƒXƒRƒA
+    int clearScore = 1000; //ï¿½Nï¿½ï¿½ï¿½Aï¿½Xï¿½Rï¿½A
     [SerializeField]
-    int breakScore = 100; //áŠQ•¨‚ğ‰ó‚µ‚½‚Æ‚«‚ÌƒXƒRƒA
+    int breakScore = 100; //ï¿½ï¿½Qï¿½ï¿½ï¿½ï¿½ï¿½ó‚µ‚ï¿½ï¿½Æ‚ï¿½ï¿½ÌƒXï¿½Rï¿½A
 
-    //=== ƒCƒxƒ“ƒg“o˜^ ====================================
+    //=== ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½oï¿½^ ====================================
 
 
-    //=== ƒR[ƒh ====================================
+    //=== ï¿½Rï¿½[ï¿½h ====================================
 
-    //ƒVƒ“ƒOƒ‹ƒgƒ“‰»
+    //ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½
     private void Awake()
     {
         if (instance == null)
@@ -54,24 +54,25 @@ public    static ScoreManager instance; //ƒCƒ“ƒXƒ^ƒ“ƒX‰»
     // Start is called before the first frame update
     void Start()
     {
-        myScore = 0; //‰Šú’l‚ğƒŠƒZƒbƒg
-        //ƒXƒe[ƒWƒNƒŠƒA‚ÉƒXƒRƒA‚ª‰ÁZ‚³‚ê‚é
+        myScore = 0; //ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½bï¿½g
+        //ï¿½Xï¿½eï¿½[ï¿½Wï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ÉƒXï¿½Rï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½
         GameStateManager.instance.StateEndHandler += PlusClearScore;
     }
 
-    //áŠQ•¨‚ğ‰ó‚µ‚½‚Æ‚«‚É©•ª‚ÌƒXƒRƒA‚É‰ÁZ‚·‚é
+    //ï¿½ï¿½Qï¿½ï¿½ï¿½ï¿½ï¿½ó‚µ‚ï¿½ï¿½Æ‚ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ÌƒXï¿½Rï¿½Aï¿½É‰ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½
   public  void PlusBreakScore()
     {
         myScore += breakScore;
+        Debug.Log(myScore);
     }
 
-    //ƒNƒŠƒA‚µ‚½‚Æ‚«‚É©•ª‚ÌƒXƒRƒA‚É‰ÁZ‚·‚é
+    //ï¿½Nï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½ÌƒXï¿½Rï¿½Aï¿½É‰ï¿½ï¿½Zï¿½ï¿½ï¿½ï¿½
     void PlusClearScore()
     {
         myScore += clearScore;
     }
 
-    //ƒXƒRƒA‚ğ•Û‘¶‚·‚é
+    //ï¿½Xï¿½Rï¿½Aï¿½ï¿½Û‘ï¿½ï¿½ï¿½ï¿½ï¿½
     void SaveScore()
     {
         PrefasWrapper.SetSaveData(PrefasWrapper.KEY.Score, MyScore);

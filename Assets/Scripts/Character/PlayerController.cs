@@ -32,7 +32,7 @@ public class PlayerController : BaseCharacterController
     protected override void Update()
     {
         if(hp <= 0){
-            
+            Dead();
         }
     }
 
@@ -147,6 +147,22 @@ public class PlayerController : BaseCharacterController
 
     public void ActionDamage(float _damage){
         hp -= _damage;
+    }
+
+    public void ActionAttack(){
+        if(Input.GetMouseButtonDown(0)){
+            GameObject clickedGameObject = null;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit2D = Physics2D.Raycast((Vector2)ray.origin,(Vector2)ray.direction);
+            if(hit2D){
+                clickedGameObject = hit2D.transform.gameObject;
+                if(clickedGameObject.gameObject.tag == "Liquid"){
+                    Destroy(clickedGameObject);//<-ObjectPool はまた今度
+                    ScoreManager.instance.PlusBreakScore();//スコア加算
+                }
+            }
+
+        }
     }
 
     bool SetHP(float _hp, float _hpMax)
