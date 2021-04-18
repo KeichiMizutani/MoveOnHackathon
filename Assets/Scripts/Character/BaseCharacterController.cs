@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BaseCharacterController : MonoBehaviour
 {
@@ -33,8 +34,8 @@ public class BaseCharacterController : MonoBehaviour
     protected GameObject groundCheckOnRoadObject;               //ステージのGameObjectを格納
     protected GameObject groundCheckOnEnemyObject;              //敵や障害物のGameObjectを格納
 
-                         
-
+    //=== イベントの設定 ====================================
+   bool isMove = false; //キャラクターが動けるかどうか
 
     //=== コード(Monobehaviour基本機能の実装) ================
     protected virtual void Awake()
@@ -54,7 +55,8 @@ public class BaseCharacterController : MonoBehaviour
 
     protected virtual void Start()
     {
-
+        GameStateManager.instance.StatePlayHandler += StartMove;
+        GameStateManager.instance.StateEndHandler += StopMove;
     }
 
     protected virtual void Update()
@@ -62,10 +64,25 @@ public class BaseCharacterController : MonoBehaviour
 
     }
 
+    //キャラクターが動き始めるイベント処理開始
+    void StartMove()
+    {
+        isMove = true;
+    }
+
+    //キャラクターを止めるイベント処理開始
+    void StopMove()
+    {
+        isMove = false;
+    }
+
     protected virtual void FixedUpdate()
     {
+        //動けるかどうかチェック
+      if (isMove)
+      {
         // 落下チェック
-        if(transform.position.y < -30f)
+        if (transform.position.y < -30f)
         {
 
         }
@@ -82,11 +99,11 @@ public class BaseCharacterController : MonoBehaviour
         groundCheckCollider[1] = Physics2D.OverlapPointAll(groundCheckC.position);
         groundCheckCollider[2] = Physics2D.OverlapPointAll(groundCheckR.position);
 
-        foreach(Collider2D[] groundCheckList in groundCheckCollider)
+        foreach (Collider2D[] groundCheckList in groundCheckCollider)
         {
-            foreach(Collider2D groundCheck in groundCheckList)
+            foreach (Collider2D groundCheck in groundCheckList)
             {
-                if(groundCheck != null)
+                if (groundCheck != null)
                 {
                     if (!groundCheck.isTrigger)
                     {
@@ -115,6 +132,7 @@ public class BaseCharacterController : MonoBehaviour
         float vx = Mathf.Clamp(rigidbody2D.velocity.x, velocityMin.x, velocityMax.x);
         float vy = Mathf.Clamp(rigidbody2D.velocity.y, velocityMin.y, velocityMax.y);
         rigidbody2D.velocity = new Vector2(vx, vy);
+    }
     }
 
     protected virtual void FixedUpdateCharacter()

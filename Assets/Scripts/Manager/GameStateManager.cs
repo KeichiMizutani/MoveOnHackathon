@@ -23,7 +23,6 @@ public class GameStateManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        
     }
 
     private void Start()
@@ -36,7 +35,6 @@ public class GameStateManager : MonoBehaviour
     {
         SetState(gameState.Ready);
         StateReadyHandler?.Invoke();
-       
     }
 
     //ステートをPlayに変更してPlayイベントに登録されている処理を実行させる
